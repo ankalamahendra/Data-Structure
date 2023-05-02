@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+#define ROWS 3
+#define COLS 3
+
+int main() {
+    int matrix1[ROWS][COLS], matrix2[ROWS][COLS], result[ROWS][COLS];
+    int i, j;
+
+    printf("Enter the elements of matrix1:\n");
+    for (i = 0; i < ROWS; i++) {
+        for (j = 0; j < COLS; j++) {
+            scanf("%d", &matrix1[i][j]);
+        }
+    }
+
+    printf("Enter the elements of matrix2:\n");
+    for (i = 0; i < ROWS; i++) {
+        for (j = 0; j < COLS; j++) {
+            scanf("%d", &matrix2[i][j]);
+        }
+    }
+
+    // subtract the second matrix from the first matrix
+    for (i = 0; i < ROWS; i++) {
+        for (j = 0; j < COLS; j++) {
+            result[i][j] = matrix1[i][j] - matrix2[i][j];
+        }
+    }
+
+    // print the result
+    printf("The difference between matrix1 and matrix2 is:\n");
+    for (i = 0; i < ROWS; i++) {
+        for (j = 0; j < COLS; j++) {
+            printf("%d ", result[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
