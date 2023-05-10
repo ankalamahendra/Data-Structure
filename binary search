@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<conio.h>
+
+void main() { 
+    int (first, lost, middle, n, search, assay (100));
+    Printf("Enter number of elements");
+    scanf("%d", &n);
+
+Printf("Enter %d integer \n",n);
+for (i=0; i<n; i++)
+scanf ("%d", &search);
+
+first = 0
+lost = n-1
+middle = (first + lost/2)
+
+while (first <= lost)
+{
+if ([array <middle] < search)
+first = middle+1;
+
+else if(array [middle = search])
+
+Point f("d", found at location %d \n", search, middle +1);
+break;
+}
+else
+
+lost middle-1;
+middle =([frist + last]/2);
+}
+if (first > last)
+
+Printf("Net found %d is not present in the last \n; search, middle+1);
+
+getch ();
+
+}
