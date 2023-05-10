@@ -1,0 +1,118 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+    int data;
+    struct node* next;
+};
+
+void print_list(struct node* head) {
+    while (head != NULL) {
+        printf("%d ", head->data);
+        head = head->next;
+    }
+    printf("\n");
+}
+
+void insert_at_beginning(struct node** head_ref, int new_data) {
+    struct node* new_node = (struct node*) malloc(sizeof(struct node));
+    new_node->data = new_data;
+    new_node->next = *head_ref;
+    *head_ref = new_node;
+}
+
+void insert_at_end(struct node** head_ref, int new_data) {
+    struct node* new_node = (struct node*) malloc(sizeof(struct node));
+    new_node->data = new_data;
+    new_node->next = NULL;
+
+    if (*head_ref == NULL) {
+        *head_ref = new_node;
+        return;
+    }
+
+    struct node* last = *head_ref;
+    while (last->next != NULL) {
+        last = last->next;
+    }
+    last->next = new_node;
+}
+
+void insert_at_position(struct node** head_ref, int new_data, int position) {
+    struct node* new_node = (struct node*) malloc(sizeof(struct node));
+    new_node->data = new_data;
+    
+    if (position == 0) {
+        new_node->next = *head_ref;
+        *head_ref = new_node;
+        return;
+    }
+
+    struct node* current = *head_ref;
+    int i;
+    for (i = 0; i < position - 1 && current != NULL; i++) {
+        current = current->next;
+    }
+
+    if (current == NULL) {
+        printf("Position out of range\n");
+        return;
+    }
+
+    new_node->next = current->next;
+    current->next = new_node;
+}
+
+int main() {
+    struct node* head = NULL;
+
+    int choice, data, position;
+
+    do {
+        printf("1. Insert at beginning\n");
+        printf("2. Insert at end\n");
+        printf("3. Insert at position\n");
+        printf("4. Print list\n");
+        printf("0. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter data to insert: ");
+                scanf("%d", &data);
+                insert_at_beginning(&head, data);
+                break;
+
+            case 2:
+                printf("Enter data to insert: ");
+                scanf("%d", &data);
+                insert_at_end(&head, data);
+                break;
+
+            case 3:
+                printf("Enter data to insert: ");
+                scanf("%d", &data);
+                printf("Enter position: ");
+                scanf("%d", &position);
+                insert_at_position(&head, data, position);
+                break;
+
+            case 4:
+                printf("List: ");
+                print_list(head);
+                break;
+
+            case 0:
+                break;
+
+            default:
+                printf("Invalid choice\n");
+        }
+
+        printf("\n");
+
+    } while (choice != 0);
+
+    return 0;
+}
